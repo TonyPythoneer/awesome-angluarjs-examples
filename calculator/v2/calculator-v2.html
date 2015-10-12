@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="calculatorApp">
+<head>
+	<title>Calculator</title>
+
+  <!-- import css -->
+  <link rel="stylesheet" type="text/css" href="calculator-stylesheet.css">
+
+  <!-- import js -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+  <script src="calculator-action.js"></script>
+</head>
+<body ng-controller="calculatorPanel as panel">
+  <input type="text" class="monitor" value="{{panel.monitor}}"/>
+  <input type="text" class="op_register" value="{{panel.operation}}"/>
+
+  <div ng-repeat="rowButtons in panel.calculatorButtons">
+    <span ng-repeat="theButton in rowButtons">
+      <button class="keyboard" ng-click="panel.clickButton(theButton)">{{theButton}}</button>
+    </span>
+    <br/>
+  </div>
+</body>
+</html>
