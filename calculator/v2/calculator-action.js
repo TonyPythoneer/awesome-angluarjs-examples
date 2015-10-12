@@ -8,8 +8,8 @@ angular
 
     self.monitor = '0';
     self.calculatorButtons = [['7', '8', '9', '/'],
-                              ['4', '5', '6', 'x'],
-                              ['1', '2', '3', '-'],
+                              ['4', '5', '6', '*'],
+                              ['1', '2', '3', '-', 'ac'],
                               ['0', '.', '=', '+', 'c']];
 
     // Define function
@@ -25,14 +25,13 @@ angular
     }
 
     var inputOperation = function(op){
-      if (self.operation){
+      if (!!self.operation){
         memory = eval(memory + self.operation + self.monitor)
         self.monitor = memory;
       }else{
         memory = self.monitor
       }
       self.operation = op;
-      initiation = true;
     }
 
     var inputPoint = function(){
@@ -49,7 +48,19 @@ angular
 
     var inputClear = function(){
       self.monitor = '0';
-      initiation = true;
+    }
+
+    var inputAllClear = function(){
+      self.monitor = memory;
+      self.operation = '';
+      self.monitor = '0';
+      memory = 0
+    }
+
+    var inputEqual = function(){
+      memory = eval(memory + self.operation + self.monitor);
+      self.monitor = memory;
+      self.operation = '';
     }
 
     self.clickButton = function(input){
@@ -62,7 +73,12 @@ angular
           inputPoint();
         }else if (input=='c'){
           inputClear();
+        }else if (input=='='){
+          inputEqual();
+        }else if (input=='ac'){
+          inputAllClear();
         }
+        initiation = true;
       }
       console.log(initiation);
     }
