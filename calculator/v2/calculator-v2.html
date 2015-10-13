@@ -11,14 +11,23 @@
   <script src="calculator-action.js"></script>
 </head>
 <body ng-controller="calculatorPanel as panel">
-  <input type="text" class="monitor" value="{{panel.monitor}}"/>
-  <input type="text" class="op_register" value="{{panel.operation}}"/>
-
-  <div ng-repeat="rowButtons in panel.calculatorButtons">
-    <span ng-repeat="theButton in rowButtons">
-      <button class="keyboard" ng-click="panel.clickButton(theButton)">{{theButton}}</button>
-    </span>
-    <br/>
-  </div>
+  <table>
+    <tr>
+      <td>
+        <input type="text" class="monitor" value="{{panel.monitor}}"/>
+        <input type="text" class="op_register" value="{{panel.operation}}"/>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div ng-repeat="rowButtons in panel.calculatorButtons">
+          <span ng-repeat="theButton in rowButtons">
+            <button class="keyboard" ng-click="panel.clickButton(theButton)">{{theButton}}</button>
+          </span>
+          <br/>
+        </div>
+      </td>
+    </tr>
+  </table>
 </body>
 </html>
