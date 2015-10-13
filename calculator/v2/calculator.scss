@@ -3,6 +3,16 @@
   font-size: $f;
 }
 
+td {
+  padding: 10px;
+  background: #C8FBFD;
+}
+
+table, td {
+   border: 1px solid black;
+
+}
+
 .monitor{
   @include basic-interface-settings(100px, 50px);
   width: 400px;

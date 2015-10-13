@@ -1,3 +1,10 @@
+td {
+  padding: 10px;
+  background: #C8FBFD; }
+
+table, td {
+  border: 1px solid black; }
+
 .monitor {
   height: 100px;
   font-size: 50px;
