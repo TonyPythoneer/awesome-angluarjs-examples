@@ -1,0 +1,21 @@
+@mixin basic-interface-settings($h, $f) {
+  height: $h;
+  font-size: $f;
+}
+
+.monitor{
+  @include basic-interface-settings(100px, 50px);
+  width: 400px;
+  text-align: right;
+}
+
+.op_register{
+  @include basic-interface-settings(100px, 50px);
+  width: 50px;
+}
+
+.keyboard{
+  @include basic-interface-settings(100px, 50px);
+  width:100px;
+  height:100px;
+}

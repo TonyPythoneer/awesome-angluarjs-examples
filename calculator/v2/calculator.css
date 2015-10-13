@@ -1,0 +1,18 @@
+.monitor {
+  height: 100px;
+  font-size: 50px;
+  width: 400px;
+  text-align: right; }
+
+.op_register {
+  height: 100px;
+  font-size: 50px;
+  width: 50px; }
+
+.keyboard {
+  height: 100px;
+  font-size: 50px;
+  width: 100px;
+  height: 100px; }
+
+/*# sourceMappingURL=calculator.css.map */

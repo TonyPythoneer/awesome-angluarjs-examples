@@ -1,0 +1,3 @@
+#sass files
+*.map
+.sass-cache
