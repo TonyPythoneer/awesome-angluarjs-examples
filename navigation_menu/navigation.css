@@ -1,0 +1,15 @@
+.clickActive {
+  background-color: green;
+}
+
+.clickInactive {
+  background-color: #6495ED;
+}
+
+a{
+  padding: 20px;
+}
+
+nav{
+  margin:20px;
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="navigationApp">
+<head>
+  <title>Navigation Menu</title>
+
+  <!-- import css-->
+  <link rel="stylesheet" type="text/css" href="navigation.css">
+
+
+  <!-- import js -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+  <script src="navigation.js"></script>
+</head>
+<body ng-controller="navigationBar as nav">
+  <nav>
+    <a ng-repeat="item in nav.items" ng-bind="item.label"
+       ng-click="nav.triggerButton(item.label)"
+       ng-class="nav.getClickedClass(item.clicked)" href="#"></a>
+  </nav>
+
+  <p ng-hide="nav.showMsg">Please click a menu item</p>
+  <p ng-show="nav.showMsg">You chose <b>{{nav.clickedLabel}}</b></p>
+</body>
+</html>
