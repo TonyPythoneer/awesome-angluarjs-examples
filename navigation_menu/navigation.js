@@ -31,14 +31,3 @@ angular
       };
     };
   }])
-  .directive('navigationMsg', function() {
-    var self = this;
-    var cont = '';
-    if (self.clickedLabel){
-      cont = "You chose <span>{{self.clickedLabel}}</span>"
-    }
-
-    return {
-      template: "{{self.clickedLabel}}"
-    };
-  });
