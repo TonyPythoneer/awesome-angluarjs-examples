@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="orderformApp">
+<head>
+  <title>Order Form</title>
+
+  <!-- import css-->
+  <link rel="stylesheet" type="text/css" href="order_form.css">
+
+  <!-- import js -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+  <script src="order_form.js"></script>
+</head>
+<body ng-controller="orderformServices as orderform">
+  <table>
+    <th>Services</th>
+    <tr ng-repeat="item in orderform.items"
+        ng-click="orderform.selectTheItem($index)"
+        ng-class="orderform.getSelectClass(item.active)">
+      <td>{{item.label}}</td>
+      <td>{{item.getPrice()}}</td>
+    </tr>
+    <tr>
+      <td>Total:</td>
+      <td>{{orderform.total}}</td>
+    </tr>
+  </table>
+</body>
+</html>
