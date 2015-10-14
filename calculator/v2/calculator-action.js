@@ -32,6 +32,7 @@ angular
         memory = self.monitor
       }
       self.operation = op;
+      initiation = true;
     }
 
     var inputPoint = function(){
@@ -40,14 +41,22 @@ angular
       if (!!~indexPoint){
         if (indexPoint == self.monitor.length-1){
           self.monitor = self.monitor.replace('.', '');
+          if (self.monitor == '0'){
+            initiation = true;
+          }
         }
       }else{
+        if (self.monitor == '0'){
+          initiation = false;
+        }
         self.monitor = self.monitor + '.';
       }
+      console.log(initiation);
     }
 
     var inputClear = function(){
       self.monitor = '0';
+      initiation = true;
     }
 
     var inputAllClear = function(){
@@ -55,12 +64,14 @@ angular
       self.operation = '';
       self.monitor = '0';
       memory = 0
+      initiation = true;
     }
 
     var inputEqual = function(){
       memory = eval(memory + self.operation + self.monitor);
       self.monitor = memory;
       self.operation = '';
+      initiation = true;
     }
 
     self.clickButton = function(input){
@@ -78,8 +89,6 @@ angular
         }else if (input=='ac'){
           inputAllClear();
         }
-        initiation = true;
       }
-      console.log(initiation);
     }
 }]);
