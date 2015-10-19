@@ -17,6 +17,24 @@
                               ['1', '2', '3', '-', 'ac'],
                               ['0', '.', '=', '+', 'c']];
 
+    self.clickButton = function(input){
+      if (!isNaN(parseInt(input))){
+        inputNumber(initiation, input);
+      }else{
+        if (!!~['+', '-', '*', '/'].indexOf(input)){
+          inputOperation(input);
+        }else if (input=='.'){
+          inputPoint();
+        }else if (input=='c'){
+          inputClear();
+        }else if (input=='='){
+          inputEqual();
+        }else if (input=='ac'){
+          inputAllClear();
+        }
+      }
+    }
+
     // Define function
     var inputNumber = function(init, num){
       if (self.monitor != '0' || num != '0'){
@@ -79,22 +97,5 @@
       initiation = true;
     }
 
-    self.clickButton = function(input){
-      if (!isNaN(parseInt(input))){
-        inputNumber(initiation, input);
-      }else{
-        if (!!~['+', '-', '*', '/'].indexOf(input)){
-          inputOperation(input);
-        }else if (input=='.'){
-          inputPoint();
-        }else if (input=='c'){
-          inputClear();
-        }else if (input=='='){
-          inputEqual();
-        }else if (input=='ac'){
-          inputAllClear();
-        }
-      }
-    }
   }
 })();
