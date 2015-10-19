@@ -1,6 +1,8 @@
 angular
-  .module('calculatorApp', [])
-  .controller('calculatorPanel', [function() {
+  .module('calculatorApp')
+  .controller('calculatorPanel', [calculatorPanel]);
+
+function calculatorPanel() {
     // Local variables
     var self = this;
     var memory = '0';
@@ -91,4 +93,4 @@ angular
         }
       }
     }
-}]);
+}
