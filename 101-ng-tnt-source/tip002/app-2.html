@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app="tip002App">
+<head>
+  <title></title>
+
+  <!-- import css-->
+  <!--<link rel="stylesheet" type="text/css" href="name.css">-->
+
+  <!-- import js -->
+  <script src="./../lib/angular.min.js"></script>
+  <script src="./app-2.js"></script>
+</head>
+<body ng-controller="tip002Ctrl as ctrl">
+    <button ng-click='ctrl.readBtn()'>btn</button><br>
+    <input ng-model="ctrl.input"></input>
+    <div>{{ctrl.output}}</div>
+</body>
+</html>

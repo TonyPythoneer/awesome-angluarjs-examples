@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app="tip002App">
+<head>
+  <title></title>
+
+  <!-- import css-->
+  <!--<link rel="stylesheet" type="text/css" href="name.css">-->
+
+  <!-- import js -->
+  <script src="./../lib/angular.min.js"></script>
+  <script src="./app-1.js"></script>
+</head>
+<body ng-controller="tip002Ctrl as ctrl">
+    <div ng-repeat="num in ctrl.range(1,3)">
+        <button ng-click='ctrl.readBtn(num)'>{{ctrl.labelBtn}}{{num}}</button><br/>
+        <span>drctv1 knows that: {{ctrl.spanWord}}</span>
+    </div>
+</body>
+</html>
