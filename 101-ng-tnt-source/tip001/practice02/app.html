@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="tip001App">
+<head>
+  <title></title>
+
+  <!-- import css-->
+  <!--<link rel="stylesheet" type="text/css" href="name.css">-->
+
+  <!-- import js -->
+  <script src="./../../lib/angular.min.js"></script>
+  <script src="./app.js"></script>
+  <script src="./controllers/tip001Controller.js"></script>
+  <script src="./directives/tip001Directive.js"></script>
+</head>
+<body ng-controller="tip001Ctrl as ctrl">
+    <h1>Angular Controllers, the DRY way!</h1>
+    <div ng-repeat="btn in ctrl.alertBtns">
+        <alert-btn></alert-btn>
+    </div>
+</body>
+</html>
