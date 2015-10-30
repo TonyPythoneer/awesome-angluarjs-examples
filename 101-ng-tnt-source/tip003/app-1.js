@@ -16,8 +16,7 @@
     .factory('tip003factory', [tip003factory]);
 
     function tip003factory() {
-        var self = this;
-        _data = null;
+        var _data = null;
 
         return {
             setData : function (data){
@@ -38,7 +37,7 @@
 
   angular
     .module('tip003App')
-    .directive('setState', [setState]);
+    .directive('setState', ['tip003factory', setState]);
 
     function setState(tip003factory) {
       return {
@@ -46,11 +45,8 @@
         scope:{}, //isolated Scope
         template: '<button ng-click="setState()">setState</button>',
         controller: function($scope){
-          var self = this;
           $scope.setState = function(){
-            console.log(tip003factory);
             tip003factory.setData("hello");
-            console.log("fuck!");
           }
         }
       }
@@ -65,16 +61,16 @@
 
   angular
     .module('tip003App')
-    .directive('getState', [getState]);
+    .directive('getState', ['tip003factory', getState]);
 
     function getState(tip003factory) {
       return {
         restrict: 'E',
+        scope: {}, //Isolated Scope
         template: '<button ng-click="getState()">getState</button><br/><span>{{data}}</span>',
-        controller: function(){
-          var self = this;
-          self.getState = function(){
-            self.data = tip003factory.getState();
+        controller: function($scope){
+          $scope.getState = function(){
+            $scope.data = tip003factory.getData();
           }
         }
       }
