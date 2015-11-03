@@ -3,7 +3,7 @@
   'use strict';
 
   angular
-    .module('tip002App', []);
+    .module('tip002.module', []);
 
 })();
 
@@ -12,10 +12,10 @@
   'use strict';
 
   angular
-    .module('tip002App')
-    .controller('tip002Ctrl', [tip002Ctrl]);
+    .module('tip002.module')
+    .controller('tip002Controller', [tip002Controller]);
 
-    function tip002Ctrl() {
+    function tip002Controller() {
         var self = this;
 
         self.readBtn = readBtn;

@@ -3,7 +3,7 @@
   'use strict';
 
   angular
-    .module('tip002App', []);
+    .module('tip002.module', []);
 
 })();
 
@@ -12,10 +12,10 @@
   'use strict';
 
   angular
-    .module('tip002App')
-    .controller('tip002Ctrl', [tip002Ctrl]);
+    .module('tip002.module')
+    .controller('tip002Controller', [tip002Controller]);
 
-    function tip002Ctrl() {
+    function tip002Controller() {
         var self = this;
 
         self.readBtn = readBtn;
@@ -35,7 +35,7 @@
   'use strict';
 
   angular
-    .module('tip002App')
+    .module('tip002.module')
     .directive('parent', [parent]);
 
     function parent() {
@@ -57,7 +57,7 @@
   'use strict';
 
   angular
-    .module('tip002App')
+    .module('tip002.module')
     .directive('child', [child]);
 
     function child() {
@@ -66,12 +66,14 @@
         scope: {},
         require: '^parent', //look on parent or the same node for controller
         template: '<button ng-click="clicked()">click me</button>',
-        link: function(scope, elm, attrs, tip002Ctrl){ //then inject it as parentCtrl
-          scope.clicked = function(){
-            tip002Ctrl.calculate();
-          }
-        }
+        link: link
       };
+    }
+
+    function link(scope, elm, attrs, tip002Controller){ //then inject it as parentCtrl
+      scope.clicked = function(){
+        tip002Controller.calculate();
+      }
     }
 
 })();
