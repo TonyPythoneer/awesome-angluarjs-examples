@@ -2,10 +2,10 @@
   'use strict';
 
   angular
-    .module('tip001App')
-    .controller('tip001Ctrl', [tip001Ctrl]);
+    .module('tip001.module')
+    .controller('tip001Controller', [tip001Controller]);
 
-  function tip001Ctrl(){
+  function tip001Controller(){
     var self = this;
     self.alertBtns = ['one', 'two'];
     self.pressBtn = pressBtn;

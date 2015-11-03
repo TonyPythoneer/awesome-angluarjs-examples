@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="tip001App">
+<html ng-app="tip001.module">
 <head>
   <title></title>
 
@@ -8,10 +8,10 @@
 
   <!-- import js -->
   <script src="./../../lib/angular.min.js"></script>
-  <script src="./app.js"></script>
-  <script src="./controllers/tip001Controller.js"></script>
+  <script src="./tip001.module.js"></script>
+  <script src="./controllers/tip001.controller.js"></script>
 </head>
-<body ng-controller="tip001Ctrl as ctrl">
+<body ng-controller="tip001Controller as ctrl">
     <h1>Angular Controllers, the DRY way!</h1>
     <div ng-repeat="btn in ctrl.alertBtns">
         <button ng-click="ctrl.pressBtn(btn)">click me</button>
