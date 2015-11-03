@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('tip001App')
+    .module('tip001.module')
     .directive('alertBtn', [alertBtn]);
 
   function alertBtn(){
