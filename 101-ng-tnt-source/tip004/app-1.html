@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="tip004.module">
+<head>
+  <title></title>
+
+  <!-- import css-->
+  <!--<link rel="stylesheet" type="text/css" href="name.css">-->
+
+  <!-- import js -->
+  <script src="./../lib/angular.min.js"></script>
+  <script src="./app-1.js"></script>
+</head>
+<body ng-controller="tip004Controller as ctrl">
+  <input type="text" ng-model="ctrl.input">
+  <button ng-click="ctrl.sendInputField()">publish</button>
+  <span ng-bind="ctrl.output"></span>
+
+  <div ng-repeat="element in ctrl.range(0,2)">
+    <input type="checkbox" ng-click="ctrl.clickTheField($index)">
+  </div>
+
+</body>
+</html>
