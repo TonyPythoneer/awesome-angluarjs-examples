@@ -15,17 +15,17 @@
     .module('tip002.module')
     .controller('tip002Controller', [tip002Controller]);
 
-    function tip002Controller() {
-        var self = this;
+  function tip002Controller() {
+      var self = this;
 
-        self.readBtn = readBtn;
+      self.readBtn = readBtn;
 
-        ////
+      ////
 
-        function readBtn(){
-            self.output = self.input;
-        }
-    }
+      function readBtn(){
+          self.output = self.input;
+      }
+  }
 
 })();
 
@@ -38,18 +38,24 @@
     .module('tip002.module')
     .directive('parent', [parent]);
 
-    function parent() {
-      return {
-        restrict: 'E',
-        controller: function($scope){
-          this.calculate = function(){
-            console.log(5+5);
-          }
-        }
-      }
+  function parent() {
+    var directive = {
+      restrict: 'E',
+      controller: ParentController
     }
 
+    return directive;
+
+  }
+
 })();
+
+
+function ParentController(){
+  this.calculate = function(){
+    console.log(5+5);
+  }
+}
 
 
 // Get application - directive - child
@@ -60,20 +66,20 @@
     .module('tip002.module')
     .directive('child', [child]);
 
-    function child() {
-      return {
-        restrict: 'E',
-        scope: {},
-        require: '^parent', //look on parent or the same node for controller
-        template: '<button ng-click="clicked()">click me</button>',
-        link: link
-      };
-    }
+  function child() {
+    var directive = {
+      restrict: 'E',
+      scope: {},
+      require: '^parent', //look on parent or the same node for controller
+      template: '<button ng-click="clicked()">click me</button>',
+      link: link
+    };
+    return directive;
 
     function link(scope, elm, attrs, tip002Controller){ //then inject it as parentCtrl
       scope.clicked = function(){
         tip002Controller.calculate();
       }
     }
-
+  }
 })();
