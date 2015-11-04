@@ -1,21 +1,21 @@
 // Set application
 (function() {
-  'use strict';
+    'use strict';
 
-  angular
-    .module('tip002App', []);
+    angular
+        .module('tip003.module', []);
 
 })();
 
 // Get application - controller
 (function() {
-  'use strict';
+    'use strict';
 
-  angular
-    .module('tip002App')
-    .controller('tip002Ctrl', [tip002Ctrl]);
+    angular
+        .module('tip003.module')
+        .controller('tip003Controller', [tip003Controller]);
 
-    function tip002Ctrl() {
+    function tip003Controller() {
         var self = this;
 
         self.readBtn = readBtn;
