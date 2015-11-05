@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="tip004.module">
+<html ng-app="tip004">
 <head>
   <title></title>
 
@@ -15,8 +15,8 @@
   <button ng-click="ctrl.sendInputField()">publish</button>
   <span ng-bind="ctrl.output"></span>
 
-  <div ng-repeat="element in ctrl.range(0,2)">
-    <input type="checkbox" ng-click="ctrl.clickTheField($index)">
+  <div ng-repeat="field in ctrl.fields">
+    <input type="checkbox" ng-click="ctrl.clickTheField($index)">{{field.val}}
   </div>
 
 </body>
