@@ -1,0 +1,30 @@
+<div>
+    <input type="button" value="Edit" ng-click="ctrl.edit()" ng-show="ctrl.canEdit"/>
+    <input type="button" value="Search" ng-click="ctrl.search()" ng-show="ctrl.canSearch"/>
+    <input type="button" value="Cancel" ng-click="ctrl.cancel()" ng-show="ctrl.canCancel"/>
+    <input type="button" value="Ok" ng-click="ctrl.ok()" ng-show="ctrl.canOk"/>
+    <input type="button" value="Save" ng-click="ctrl.save()" ng-show="ctrl.canSave"/>
+</div>
+
+<div>
+    <div>
+        <div>Full Name</div>
+        <div><input ng-disabled="ctrl.isReadOnly" type="text" ng-model="ctrl.data.fullname"/></div>
+    </div>
+    <div>
+        <div>Address</div>
+        <div><input ng-disabled="ctrl.isReadOnly" type="text" ng-model="ctrl.data.address"/></div>
+    </div>
+    <div>
+        <div>Phone Number</div>
+        <div><input ng-disabled="ctrl.isReadOnly "type="text" ng-model="ctrl.data.phonenumber"/></div>
+    </div>
+</div>
+
+<!--
+<div>
+    <input type="button"
+           ng-repeat="field in ctrl.inputFields"
+           ng-value="field.value" ng-click="field.api()" ng-show="field.showParam"/>
+</div>
+-->
