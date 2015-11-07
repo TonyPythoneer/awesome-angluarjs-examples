@@ -1,0 +1,49 @@
+
+table td {
+    width:15px;
+    height:30px;
+    text-align:center;
+    vertical-align:middle;angu
+    background-color:#fff;
+    border:1px solid #ccc;
+}
+
+.block {
+    background: black;
+}
+.January{
+    background: red;
+}
+.February {
+    background: orangered;
+}
+.March {
+    background: tomato;
+}
+.April {
+    background: coral;
+}
+.May {
+    background: orange;
+} 
+.June {
+    background: gold;
+}
+.July {
+    background: yellow;
+}
+.August {
+    background: green;
+}
+.September {
+    background: mediumseagreen;
+}
+.October {
+    background: blue;
+}
+.November {
+    background: darkblue;
+}
+.December {
+    background: purple;
+}
