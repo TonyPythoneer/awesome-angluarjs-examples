@@ -22,14 +22,23 @@
             var targetDay = null;
             var isTarge = false;
 
-            self.calendarLayout = getCalendarLayout();
+            var thirtyOneDays = new Array(31);
+            thirtyOneDays[30] = 1;
 
+            //property
+            self.calendarLayout = getCalendarLayout();            
+            self.thirtyOneDays = thirtyOneDays
+            console.log(self.thirtyOneDays)
+
+            //function
             self.startTargetCalendar = startTargetCalendar;
             self.endTargetCalendar = endTargetCalendar;
+            self.toggleCalendarClass = toggleCalendarClass;
 
+            //ng-class
             self.getCalendarClass = getCalendarClass;
 
-            self.overCalendarClass = overCalendarClass;
+            
 
             /////
 
@@ -68,19 +77,14 @@
 
             function startTargetCalendar(month, dayIndex, dayValue){
                 isTarge = true;
-                console.log("startTargetCalendar");
-                if (dayValue != null){
-                    self.calendarLayout[month][dayIndex] =  !dayValue;
-                }
+                toggleCalendarClass(month, dayIndex, dayValue);
             }
 
             function endTargetCalendar(){
                 isTarge = false;
-                console.log("endTargetCalendar");
             }          
 
-            function overCalendarClass(month, dayIndex, dayValue){
-                //console.log("overCalendarClass");
+            function toggleCalendarClass(month, dayIndex, dayValue){
                 if (isTarge && dayValue != null){
                     self.calendarLayout[month][dayIndex] =  !dayValue;
                 }

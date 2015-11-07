@@ -1,7 +1,0 @@
-lu = LibraryUser(library_membership_number= '...', user_id = user)
-
-class ExampleAPIView(APIView):
-	def get(self, reqeust):
-	def post(self, reqeust):
-	def put(self, reqeust):
-	def delete(self, reqeust):
