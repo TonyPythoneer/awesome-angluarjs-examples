@@ -4,7 +4,7 @@
     <title>It has bug when it listens drag or longdown.</title>
 
     <!-- import css-->
-    <link rel="stylesheet" type="text/css" href="select-calendar">-->
+    <link rel="stylesheet" type="text/css" href="./select-calendar.css">
 
     <!-- import js -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
@@ -15,11 +15,11 @@
         <tbody ng-mouseleave="ctrl.endTargetCalendar()">
             <tr ng-repeat="(month, days) in ctrl.calendarLayout" >
                 <td ng-repeat="day in days track by $index" 
-                    ng-class="ctrl.getCalendarClass(month, $index, day)"                   
-                    ng-click="ctrl.startTargetCalendar(month, $index, day)"
+                    ng-class="ctrl.getCalendarClass(month, $index, day)"
+                    ng-mousedown="ctrl.startTargetCalendar(month, $index, day)"
                     ng-mouseup="ctrl.endTargetCalendar()"
                     ng-mouseover="ctrl.overCalendarClass(month, $index, day)"
-                    ></td>
+                    ondragstart ="return false;"></td>
             </tr>
         </tbody>
     </table>
