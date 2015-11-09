@@ -12,23 +12,46 @@
 
     angular
         .module('selectCalendar')
-        .directive('uiCalenar', uiCalenar)
+        .directive('uiCalendar', uiCalendar);
 
-        calendarController.$injector = ['$scope'];
+    uiCalendar.$injector = [];
 
-        function uiCalenar ($scope){
+    function uiCalendar(){
+        var directive = {
+            templateUrl: './ui-calendar.directive.html',
+            scope:{},  //Isolated Scope
+            transclude: true,
+            restrict: 'E',
+            //link: link,
+            controller: calendarController,
+            controllerAs: 'ctrl'
+        };
+        return directive;
+
+        /////
+
+
+        function calendarController(){
             var self = this;
+            self.thirtyOneDays = 31
             var targetMonth = null;
             var targetDay = null;
-            var isTarge = false;
-            self.calendarLayout = getCalendarLayout();
+            var isTarget = false;
 
+            var thirtyOneDays = new Array(31);
+            thirtyOneDays[30] = 1;
+
+            //property
+            self.calendarLayout = getCalendarLayout();
+            self.thirtyOneDays = thirtyOneDays;
+
+            //function
             self.startTargetCalendar = startTargetCalendar;
             self.endTargetCalendar = endTargetCalendar;
+            self.toggleCalendarClass = toggleCalendarClass;
 
+            //ng-class
             self.getCalendarClass = getCalendarClass;
-
-            self.overCalendarClass = overCalendarClass;
 
             /////
 
@@ -58,7 +81,7 @@
                 if (dayValue == null){
                     return {
                         block: true
-                    };                    
+                    };
                 }
                 var monthClass = {}
                 monthClass[month] = dayValue
@@ -66,26 +89,20 @@
             }
 
             function startTargetCalendar(month, dayIndex, dayValue){
-                isTarge = true;
-                console.log("startTargetCalendar");
-                if (dayValue != null){
-                    self.calendarLayout[month][dayIndex] =  !dayValue;
-                }
+                isTarget = true;
+                toggleCalendarClass(month, dayIndex, dayValue);
             }
 
             function endTargetCalendar(){
-                isTarge = false;
-                console.log("endTargetCalendar");
-            }          
+                isTarget = false;
+            }
 
-            function overCalendarClass(month, dayIndex, dayValue){
-                //console.log("overCalendarClass");
-                if (isTarge && dayValue != null){
+            function toggleCalendarClass(month, dayIndex, dayValue){
+                if (isTarget && dayValue != null){
                     self.calendarLayout[month][dayIndex] =  !dayValue;
                 }
             }
-
-        }
-
+        };
+    }
 
 })();

@@ -19,8 +19,8 @@
 
         /////
 
-        function link(){
-            
+        function link(scope, element, attrs) {
+
         }
     }
 

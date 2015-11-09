@@ -14,9 +14,9 @@
         .module('selectCalendar')
         .controller('calendarController', calendarController)
 
-        calendarController.$injector = ['$scope'];
+        calendarController.$injector = [];
 
-    function calendarController ($scope){
+    function calendarController (){
         var self = this;
         var targetMonth = null;
         var targetDay = null;

@@ -1,0 +1,19 @@
+<table cellpadding="0" cellspacing="0">
+    <thead>
+    <tr>
+        <th></th>
+        <th ng-repeat="eachDay in ctrl.thirtyOneDays track by $index">{{$index + 1}}</th>
+    </tr>
+    </thead>
+    <tbody ng-mouseleave="ctrl.endTargetCalendar()">
+        <tr ng-repeat="(month, days) in ctrl.calendarLayout">
+            <td>{{month}}</td>
+            <td ng-repeat="day in days track by $index"
+                ng-class="ctrl.getCalendarClass(month, $index, day)"
+                ng-mousedown="ctrl.startTargetCalendar(month, $index, day)"
+                ng-mouseup="ctrl.endTargetCalendar()"
+                ng-mouseover="ctrl.toggleCalendarClass(month, $index, day)"
+                ondragstart ="return false;"></td>
+        </tr>
+    </tbody>
+</table>
