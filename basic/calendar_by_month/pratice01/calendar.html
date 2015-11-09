@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="calendar">
+<head>
+    <title></title>
+
+    <!-- import css-->
+    <link rel="stylesheet" type="text/css" href="calendar.css">
+
+    <!-- import js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="./calendar.js"></script>
+</head>
+<body ng-controller="calendarController as ctrl">
+    <table>
+        <thead>
+            <tr>
+                <th colspan="7">{{ctrl.calendarHeader}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td ng-repeat="weekday in ctrl.weekdays" ng-bind="weekday"></td>
+            </tr>
+            <tr ng-repeat="week in ctrl.calendarLayout">
+                <td ng-repeat="day in week track by $index" ng-bind="day"></td>
+            </tr>
+        </tbody>
+    <table>
+</body>
+</html>

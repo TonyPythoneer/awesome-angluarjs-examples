@@ -14,7 +14,7 @@
         .module('selectCalendar')
         .controller('calendarController', calendarController)
 
-        calendarController.$injector = [];
+    calendarController.$injector = [];
 
     function calendarController (){
         var self = this;

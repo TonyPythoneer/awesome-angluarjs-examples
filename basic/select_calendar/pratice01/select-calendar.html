@@ -8,7 +8,7 @@
 
     <!-- import js -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-    <script src="./select-calendar.js"></script>    
+    <script src="./select-calendar.js"></script>
 </head>
 <body ng-controller="calendarController as ctrl">
     <h1>Calender UI:</h1>
@@ -16,13 +16,13 @@
         <thead>
         <tr>
             <th></th>
-            <th ng-repeat="eachDay in ctrl.thirtyOneDays track by $index">{{$index + 1}}</th>            
+            <th ng-repeat="eachDay in ctrl.thirtyOneDays track by $index">{{$index + 1}}</th>
         </tr>
         </thead>
         <tbody ng-mouseleave="ctrl.endTargetCalendar()">
             <tr ng-repeat="(month, days) in ctrl.calendarLayout">
                 <td>{{month}}</td>
-                <td ng-repeat="day in days track by $index" 
+                <td ng-repeat="day in days track by $index"
                     ng-class="ctrl.getCalendarClass(month, $index, day)"
                     ng-mousedown="ctrl.startTargetCalendar(month, $index, day)"
                     ng-mouseup="ctrl.endTargetCalendar()"
