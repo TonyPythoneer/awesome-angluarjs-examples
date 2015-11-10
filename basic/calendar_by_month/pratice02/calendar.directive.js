@@ -19,13 +19,9 @@
 
         /////
         function link(scope, element, attrs) {
-            var prevBtn = '<a href="#" class="prev">prev</a>'
-            var nextBtn = '<a href="#" class="next">next</a>'
-            var calendarUI = CalendarFactory.getCalendarUI();
-
-            element.append(prevBtn);
-            element.append(nextBtn);
-            element.append(calendarUI);
+            element.append('<a href="#" class="prev">prev</a>');
+            element.append('<a href="#" class="next">next</a>');
+            element.append(CalendarFactory.getCalendarTable());
 
             var Btns = element.find('a').on('click', clickPrevOrNextBtn);
 
@@ -35,13 +31,11 @@
                 var nameBtn = event.target.className;
                 if (nameBtn === "prev"){
                     CalendarFactory.prevFunc();
-                    element.find('table').remove()
-                    element.append(CalendarFactory.getCalendarUI());
                 }else if(nameBtn === "next"){
                     CalendarFactory.nextFunc();
-                    element.find('table').remove()
-                    element.append(CalendarFactory.getCalendarUI());
                 }
+                element.find('table').remove()
+                element.append(CalendarFactory.getCalendarTable());
             }
         }
     }

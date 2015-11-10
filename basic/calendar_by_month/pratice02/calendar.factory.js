@@ -15,7 +15,7 @@
         var factory = {
             prevFunc: prevFunc,
             nextFunc: nextFunc,
-            getCalendarUI: getCalendarUI
+            getCalendarTable: getCalendarTable
         }
 
         return factory
@@ -38,13 +38,17 @@
             }
         }
 
-        function getCalendarUI() {
+        function getCalendarTable(){
+            return "<table>" + getCalendarHeader() + getCalendarDate() + "</table>"
+        }
+
+        /////
+
+        function getCalendarDate() {
             var calendarArray = getCalendarArray(_year, _month);
 
             var tableHTML = '';
-            //tableHTML += '<a href="#" class="prev">prev</a>'
-            //tableHTML += '<a href="#" class="next">next</a>'
-            tableHTML += '<table>';
+            tableHTML += '<tbody>';
             for (var tableRowIndex = 0; tableRowIndex < calendarArray.length; tableRowIndex++) {
                 var theTableRow = calendarArray[tableRowIndex];
                 tableHTML += '<tr>';
@@ -53,9 +57,14 @@
                 }
                 tableHTML += '</tr>';
             }
-            tableHTML += '</table>';
+            tableHTML += '</tbody>';
 
             return tableHTML
+        }
+
+        function getCalendarHeader() {
+            var monthName = new Date(_year, _month).toLocaleString("en-us", { month: "long" });
+            return "<thead><tr><th colspan='7'>" + monthName.toUpperCase() + " " + _year + "</th></tr></thead>"
         }
 
         function getCalendarArray(theYear, theMonth) {
@@ -64,7 +73,7 @@
             var lastMonthDate = new Date(theYear, theMonth, 0).getDate();
             var thisMonthDate = new Date(theYear, theMonth + 1, 0).getDate();
 
-            var weekArray = new Array(7);
+            var weekArray = new Array();
             // Fill last month
             for (var date = lastMonthDate; new Date(theYear, theMonth - 1, date).getDay() !== 6; date--)
                 weekArray[new Date(theYear, theMonth - 1, date).getDay()] = date;
@@ -75,14 +84,15 @@
                 weekArray[weekday] = date;
                 if (weekday === 6){
                     calendarArray.push(weekArray);
-                    weekArray = new Array(7);
+                    weekArray = new Array();
                 }
             };
 
             // Fill next month
             for (var date = 1; new Date(theYear, theMonth + 1, date).getDay() !== 0; date++)
                 weekArray[new Date(theYear, theMonth + 1, date).getDay()] = date;
-            calendarArray.push(weekArray);
+
+            if (weekArray.length === 7) calendarArray.push(weekArray);
 
             return calendarArray;
         }
