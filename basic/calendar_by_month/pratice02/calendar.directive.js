@@ -25,7 +25,7 @@
 
             var Btns = element.find('a').on('click', clickPrevOrNextBtn);
 
-            ///
+            //////
 
             function clickPrevOrNextBtn(event){
                 var nameBtn = event.target.className;

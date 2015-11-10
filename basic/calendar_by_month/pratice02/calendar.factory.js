@@ -38,33 +38,46 @@
             }
         }
 
-        function getCalendarTable(){
-            return "<table>" + getCalendarHeader() + getCalendarDate() + "</table>"
+        function getCalendarTable() {
+            var tableHead = "<thead>" + getCalendarHead() + "</thead>"
+            var tableBody = "<tbody>" + getCalendarWeek() + getCalendarDate() + "</tbody>"
+            return "<table>" + tableHead + tableBody + "</table>"
         }
 
         /////
 
-        function getCalendarDate() {
-            var calendarArray = getCalendarArray(_year, _month);
+        function getCalendarWeek() {
+            var tableWeek = ''
+            var weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-            var tableHTML = '';
-            tableHTML += '<tbody>';
-            for (var tableRowIndex = 0; tableRowIndex < calendarArray.length; tableRowIndex++) {
-                var theTableRow = calendarArray[tableRowIndex];
-                tableHTML += '<tr>';
-                for (var tableCellIndex = 0; tableCellIndex < theTableRow.length; tableCellIndex++) {
-                    tableHTML += '<td>' + theTableRow[tableCellIndex]  + '</td>';
-                }
-                tableHTML += '</tr>';
-            }
-            tableHTML += '</tbody>';
+            tableWeek += '<tr>';
+            for (var weekIndex = 0; weekIndex < weekdays.length; weekIndex++)
+                tableWeek += '<td>' + weekdays[weekIndex] + '</td>'
+            tableWeek += '</tr>';
 
-            return tableHTML
+            return tableWeek
         }
 
-        function getCalendarHeader() {
+        function getCalendarDate() {
+            var tableDate = '';
+            var calendarArray = getCalendarArray(_year, _month);
+            var weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+            for (var tableRowIndex = 0; tableRowIndex < calendarArray.length; tableRowIndex++) {
+                var theTableRow = calendarArray[tableRowIndex];
+                tableDate += '<tr>';
+                for (var tableCellIndex = 0; tableCellIndex < theTableRow.length; tableCellIndex++) {
+                    tableDate += '<td>' + theTableRow[tableCellIndex]  + '</td>';
+                }
+                tableDate += '</tr>';
+            }
+
+            return tableDate
+        }
+
+        function getCalendarHead() {
             var monthName = new Date(_year, _month).toLocaleString("en-us", { month: "long" });
-            return "<thead><tr><th colspan='7'>" + monthName.toUpperCase() + " " + _year + "</th></tr></thead>"
+            return "<tr><th colspan='7'>" + monthName.toUpperCase() + " " + _year + "</th></tr>"
         }
 
         function getCalendarArray(theYear, theMonth) {
