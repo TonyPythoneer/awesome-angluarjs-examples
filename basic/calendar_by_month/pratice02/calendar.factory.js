@@ -8,9 +8,10 @@
     CalendarFactory.$injector = [];
 
     function CalendarFactory(){
-        var theDate = new Date();
-        var _year = theDate.getFullYear();
-        var _month = theDate.getMonth();
+        var theNow = new Date();
+        var isNow = true;
+        var _year = theNow.getFullYear();
+        var _month = theNow.getMonth();
 
         var factory = {
             prevFunc: prevFunc,
@@ -60,14 +61,14 @@
 
         function getCalendarDate() {
             var tableDate = '';
-            var calendarArray = getCalendarArray(_year, _month);
+            var calendarArray = getCalendarArray();
             var weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
             for (var tableRowIndex = 0; tableRowIndex < calendarArray.length; tableRowIndex++) {
                 var theTableRow = calendarArray[tableRowIndex];
                 tableDate += '<tr>';
                 for (var tableCellIndex = 0; tableCellIndex < theTableRow.length; tableCellIndex++) {
-                    tableDate += '<td>' + theTableRow[tableCellIndex]  + '</td>';
+                    tableDate += theTableRow[tableCellIndex];
                 }
                 tableDate += '</tr>';
             }
@@ -80,21 +81,37 @@
             return "<tr><th colspan='7'>" + monthName.toUpperCase() + " " + _year + "</th></tr>"
         }
 
-        function getCalendarArray(theYear, theMonth) {
+        function getCalendarArray() {
             var calendarArray = [];
-
-            var lastMonthDate = new Date(theYear, theMonth, 0).getDate();
-            var thisMonthDate = new Date(theYear, theMonth + 1, 0).getDate();
-
             var weekArray = new Array();
+
+            var lastMonthDate = new Date(_year, _month, 0).getDate();
+            var thisMonthDate = new Date(_year, _month + 1, 0).getDate();
+
+            // check isNow
+            if (theNow.getFullYear() === _year && theNow.getMonth() === _month){
+                isNow = true;
+            }else{
+                isNow = false;
+            }
+
             // Fill last month
-            for (var date = lastMonthDate; new Date(theYear, theMonth - 1, date).getDay() !== 6; date--)
-                weekArray[new Date(theYear, theMonth - 1, date).getDay()] = date;
+            for (var date = lastMonthDate; new Date(_year, _month - 1, date).getDay() !== 6; date--){
+                weekArray[new Date(_year, _month - 1, date).getDay()] = "<td class='last-month'>" + date + "</td>";
+            }
 
             // Fill this month
             for (var date = 1; date <= thisMonthDate; date++) {
-                var weekday = new Date(theYear, theMonth, date).getDay();
-                weekArray[weekday] = date;
+                var weekday = new Date(_year, _month, date).getDay();
+
+                // add now
+                if (isNow && theNow.getDate() == date){
+                    weekArray[weekday] = "<td class='this-month now'>" + date + "</td>";
+                }else{
+                    weekArray[weekday] = "<td class='this-month'>" + date + "</td>";
+                }
+
+                // push
                 if (weekday === 6){
                     calendarArray.push(weekArray);
                     weekArray = new Array();
@@ -102,8 +119,8 @@
             };
 
             // Fill next month
-            for (var date = 1; new Date(theYear, theMonth + 1, date).getDay() !== 0; date++)
-                weekArray[new Date(theYear, theMonth + 1, date).getDay()] = date;
+            for (var date = 1; new Date(_year, _month + 1, date).getDay() !== 0; date++)
+                weekArray[new Date(_year, _month + 1, date).getDay()] = "<td class='next-month'>" + date + "</td>";
 
             if (weekArray.length === 7) calendarArray.push(weekArray);
 

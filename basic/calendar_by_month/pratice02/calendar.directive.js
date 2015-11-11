@@ -19,8 +19,9 @@
 
         /////
         function link(scope, element, attrs) {
-            element.append('<a href="#" class="prev">prev</a>');
-            element.append('<a href="#" class="next">next</a>');
+            var prevBtn = '<a href="#" class="prev">prev</a>';
+            var nextBtn = '<a href="#" class="next">next</a>';
+            element.append('<div class="calendar-wrapper">' + prevBtn + nextBtn + '</div>');
             element.append(CalendarFactory.getCalendarTable());
 
             var Btns = element.find('a').on('click', clickPrevOrNextBtn);
