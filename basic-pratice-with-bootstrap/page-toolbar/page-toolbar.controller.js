@@ -72,6 +72,7 @@
         function goToThePage () {
             if (self.selectPage < 1 || self.selectPage > self.maxPage) {
                 alert("Error!")
+                self.selectPage = self.currentPage
             }else{
                 var diff = self.selectPage - self.currentPage
                 var action = (diff === 0)? 'nothing': (diff > 0) ? 'next': 'prev';
