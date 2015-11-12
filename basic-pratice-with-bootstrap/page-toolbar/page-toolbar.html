@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="pageToolbar">
+<head>
+    <title>toolbar</title>
+
+    <!-- import css-->
+    <!--<link rel="stylesheet" type="text/css" href="name.css">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./page-toolbar.css">
+
+    <!-- import js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
+    <script src="./page-toolbar.module.js"></script>
+    <script src="./page-toolbar.controller.js"></script>
+</head>
+<body ng-controller="pageToolbarController as ctrl" class="container">
+    <h1>Page ToolBar</h1>
+    <div class="row">
+      <div class="col-sm-offset-4 col-sm-4">
+        <div class="input-group">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button" ng-click="ctrl.goToThePage()">Go!</button>
+          </span>
+          <input type="text" class="form-control" placeholder="Go to..." ng-model="ctrl.selectPage">
+          <span class="input-group-addon" id="basic-addon1">{{ctrl.currentPage}} / {{ctrl.maxPage}}</span>
+        </div><!-- /input-group -->
+      </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+    <br>
+
+    <span class="input-group-btn">
+        <a type="button" class="btn btn-default"
+           ng-click="ctrl.clickPrevBtn()"
+           ng-class="ctrl.getDisableClass('Prev')">Prev
+        </a>
+        <a type="button" class="btn btn-default page-btn"
+           ng-repeat="btn in ctrl.pageButtons track by $index"
+           ng-class="ctrl.getClickedClass(btn)"
+           ng-click="ctrl.getCurrentPageBtn(btn)"
+           ng-href="#{{btn}}"
+           ng-bind="btn"></a>
+        <a type="button" class="btn btn-default"
+           ng-click="ctrl.clickNextBtn()"
+            ng-class="ctrl.getDisableClass('Next')">Next</a>
+    </span>
+
+</body>
+</html>
