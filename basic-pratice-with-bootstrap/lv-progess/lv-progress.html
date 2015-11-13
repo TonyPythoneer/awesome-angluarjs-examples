@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="lvProgress">
+<head>
+    <title>lvProgress</title>
+
+    <!-- import css-->
+    <!--<link rel="stylesheet" type="text/css" href="name.css">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+    <style type="text/css">
+        body {
+            padding-top: 50px
+        }
+        .animated-bar {
+            -webkit-transition: width 2.50s ease !important;
+               -moz-transition: width 2.50s ease !important;
+                 -o-transition: width 2.50s ease !important;
+                    transition: width 2.50s ease !important;
+        }
+    </style>
+
+    <!-- import js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
+    <script src="./lv-progress.module.js"></script>
+    <script src="./lv-progress.controller.js"></script>
+</head>
+<body ng-controller="lvProgressController as ctrl" class="container">
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped active animated-bar" role="progressbar"
+           ng-style="ctrl.animatedBar">
+        <span class="sr-only">{{ctrl.expPercentage}}% EXP</span>
+      </div>
+    </div>
+
+    <button ng-click="ctrl.addValue()">Add</button>
+    <button ng-click="ctrl.subValue()">Sub</button>
+</body>
+</html>
