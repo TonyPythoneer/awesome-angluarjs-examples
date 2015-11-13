@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="expandlistApp">
+<head>
+  <title>Expand List</title>
+
+  <!-- import js -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+  <script src="expand_list.js"></script>
+</head>
+<body ng-controller="expandlistCtrl as ctrl">
+  <form ng-submit="ctrl.addItem()">
+    <input type="text" ng-model="ctrl.toaddItem"  size="30"
+           placeholder="add new item here">
+    <input type="submit" value="add">
+  </form>
+
+  <ul ng-repeat="item in ctrl.items track by $index">
+    <li><button ng-click="ctrl.deleteTheItem($index)">X</button> {{item}}</li>
+  </ul>
+</body>
+</html>
