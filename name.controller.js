@@ -7,8 +7,6 @@
 
     function Controller(){
         var self = this;
-        self.alertBtns = ['one', 'two'];
-        self.pressBtn = pressBtn;
 
         /////////////////
 
