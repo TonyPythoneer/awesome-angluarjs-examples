@@ -1,7 +1,8 @@
 /// <reference path="./path/to/typings/angularjs/angular.d.ts"/>
+var MyModule;
 (function (MyModule) {
     "use strict";
-    var app = MyModule.getModule();
+    var app = getModule();
     var MainController = (function () {
         function MainController($interval) {
             var _this = this;

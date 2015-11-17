@@ -1,9 +1,8 @@
 /// <reference path="./../../typings/angularjs/angular.d.ts"/>
-var lvProgressModule;
-(function (lvProgressModule) {
+module lvProgressModule {
     "use strict";
     angular.module("lvProgress", []);
-    lvProgressModule.getModule = function () {
+    export var getModule: () => ng.IModule = () => {
         return angular.module("lvProgress");
-    };
-})(lvProgressModule || (lvProgressModule = {}));
+    }
+}

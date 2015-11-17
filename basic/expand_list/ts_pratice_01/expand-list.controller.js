@@ -8,8 +8,9 @@ var expandlistApp;
         function expandlistCtrl() {
             this.items = ['aaa', 'bbb', 'ccc'];
         }
-        expandlistCtrl.prototype.deleteTheItem = function (index) {
+        expandlistCtrl.prototype.propertiesdeleteTheItem = function (index) {
             this.items.splice(index, 1);
+            //999
         };
         expandlistCtrl.prototype.addItem = function () {
             this.items.push(this.toaddItem);
