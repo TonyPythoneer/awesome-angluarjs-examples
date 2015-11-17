@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="lvProgress">
+<head>
+    <title>lvProgress</title>
+
+    <!-- import css-->
+    <!--<link rel="stylesheet" type="text/css" href="name.css">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./lv-progress.css">
+
+    <!-- import js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
+    <script src="./lv-progress.module.js"></script>
+    <script src="./lv-progress.controller.js"></script>
+</head>
+<body ng-controller="lvProgressController as ctrl" class="container">
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped active animated-bar" role="progressbar"
+           ng-style="ctrl.animatedBar">
+       {{ctrl.expPercentage}}% EXP
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-default" ng-click="ctrl.addValue()">Add</button>
+    <button type="button" class="btn btn-default"
+            ng-click="ctrl.subValue()"
+            ng-class="ctrl.ClickClass()">Sub</button>
+
+    <div class="panel panel-default property-table">
+      <!-- Default panel contents -->
+      <div class="panel-heading">Lv: {{ctrl.level}}</div>
+
+      <!-- Table -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th ng-repeat="head in ctrl.propertyHead">{{head}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="(property, value) in ctrl.properties">
+                    <td>{{property}}</td>
+                    <td>{{value}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
