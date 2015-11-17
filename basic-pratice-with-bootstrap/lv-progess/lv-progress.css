@@ -1,0 +1,13 @@
+body {
+    padding-top: 50px
+}
+.animated-bar {
+    -webkit-transition: width 0.5s ease !important;
+       -moz-transition: width 0.5s ease !important;
+         -o-transition: width 0.5s ease !important;
+            transition: width 0.5s ease !important;
+}
+
+.property-table {
+    margin-top: 50px;
+}
