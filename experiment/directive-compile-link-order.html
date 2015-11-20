@@ -1,0 +1,144 @@
+<!doctype html>
+<html ng-app="Demo">
+<head>
+    <meta charset="utf-8" />
+    <title>
+        Directive Controller And Link Timing In AngularJS
+    </title>
+</head>
+<body>
+    <h1>
+        Directive Controller And Link Timing In AngularJS
+    </h1>
+    <div bn-outer>
+        <p bn-mid>
+            <span bn-inner>
+                Woot!
+            </span>
+        </p>
+        <p bn-second-mid>
+            Woot, indeed!
+        </p>
+    </div>
+
+    <!-- Load scripts. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script type="text/javascript">
+        // Create an application module for our demo.
+        var app = angular.module( "Demo", [] );
+        // -------------------------------------------------- //
+        // -------------------------------------------------- //
+        // I demonstrate the timing of directive execution.
+        app.directive(
+            "bnOuter",
+            function() {
+                function Controller( $scope ) {
+                    console.log( "Outer - Controller" );
+                }
+                function compile( tElement, tAttributes) {
+                    name = "Outer"
+                    console.log("Outer" + ': compile');
+                    return {
+                      pre: function(scope, iElem, iAttrs){
+                        console.log("Outer" + ': pre link');
+                      },
+                      post: function(scope, iElem, iAttrs){
+                        console.log("Outer" + ': post link');                   
+                      }
+                    }
+                }
+                // Return directive configuration.
+                return({
+                    controller: Controller,
+                    compile: compile
+                });
+            }
+        );
+        // -------------------------------------------------- //
+        // -------------------------------------------------- //
+        // I demonstrate the timing of directive execution.
+        app.directive(
+            "bnMid",
+            function() {
+                function Controller( $scope ) {
+                    console.log( "Mid - Controller" );
+                }
+                function compile( tElement, tAttributes) {
+                    name = "Mid"
+                    console.log("Mid" + ': compile');
+                    return {
+                      pre: function(scope, iElem, iAttrs){
+                        console.log("Mid" + ': pre link');
+                      },
+                      post: function(scope, iElem, iAttrs){
+                        console.log("Mid" + ': post link');                   
+                      }
+                    }
+                }
+                // Return directive configuration.
+                return({
+                    controller: Controller,
+                    compile: compile
+                });
+            }
+        );
+        // -------------------------------------------------- //
+        // -------------------------------------------------- //
+        // I demonstrate the timing of directive execution.
+        app.directive(
+            "bnSecondMid",
+            function() {
+                function Controller( $scope ) {
+                    console.log( "Second Mid - Controller" );
+                }
+                function compile( tElement, tAttributes) {
+                    name = "Second Mid"
+                    console.log(name + ': compile');
+                    return {
+                      pre: function(scope, iElem, iAttrs){
+                        console.log("Second Mid" + ': pre link');
+                      },
+                      post: function(scope, iElem, iAttrs){
+                        console.log("Second Mid" + ': post link');                   
+                      }
+                    }
+                }
+                // Return directive configuration.
+                return({
+                    controller: Controller,
+                    compile: compile
+                });
+            }
+        );
+        // -------------------------------------------------- //
+        // -------------------------------------------------- //
+        // I demonstrate the timing of directive execution.
+        app.directive(
+            "bnInner",
+            function() {
+                function Controller( $scope ) {
+                    console.log( "Inner - Controller" );
+                }
+                function compile( tElement, tAttributes) {
+                    name = "Inner"
+                    console.log(name + ': compile');
+                    return {
+                      pre: function(scope, iElem, iAttrs){
+                        console.log("Inner" + ': pre link');
+                      },
+                      post: function(scope, iElem, iAttrs){
+                        console.log("Inner" + ': post link');                   
+                      }
+                    }
+                }
+                // Return directive configuration.
+                return({
+                    controller: Controller,
+                    compile: compile
+                });
+            }
+        );
+    </script>
+
+</body>
+</html>
