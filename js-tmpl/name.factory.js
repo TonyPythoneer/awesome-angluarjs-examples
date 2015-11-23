@@ -3,7 +3,9 @@
 
     angular
         .module('nameApp')
-        .factory('nameFactory', [nameFactory]);
+        .factory('nameFactory', nameFactory);
+
+    nameFactory.$injector = [];
 
     function nameFactory() {
         var _data = null;
