@@ -31,12 +31,14 @@
     <div class="input-group" style="width: 10%">
         <div class="input-group-btn" aria-label="Previous">
             <button type="button" class="btn btn-default"
-                ng-click="ctrl.clickPreviousOrNextBtn(-1)">&laquo;</button>
+                ng-click="ctrl.clickPrevOrNextBtn(-1)"
+                ng-class="ctrl.enablePrevOrNextBtn('prev')">&laquo;</button>
         </div>
         <input type="text" class="form-control" value="{{ctrl.currentPage}}">
         <div class="input-group-btn" aria-label="Next">
             <button type="button" class="btn btn-default"
-                ng-click="ctrl.clickPreviousOrNextBtn(1)">&raquo;</button>
+                ng-click="ctrl.clickPrevOrNextBtn(1)"
+                ng-class="ctrl.enablePrevOrNextBtn('next')">&raquo;</button>
         </div>
     </div>
 
