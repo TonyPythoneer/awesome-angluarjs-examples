@@ -5,26 +5,43 @@
         .module('githubApp')
         .controller('GitHubApisController', GitHubApisController);
 
-    GitHubApisController.$injector = [];
+    GitHubApisController.$injector = ['$log', 'GithubApisFactory', 'GitHubApisService'];
 
-    function GitHubApisController(GithubApisFactory){
+    function GitHubApisController($log, GithubApisFactory, GitHubApisService){
         var self = this;
-        self.myRepoes = GithubApisFactory.query({username: "TonyPythoneer"});
-        console.log(self.myRepoes);
+        var maxPage;
+        self.author = "TonyPythoneer"
+        self.enablePrevBtn = false;
+        self.enableNextBtn = true;
+        self.currentPage = 1;
+        self.clickPreviousOrNextBtn = clickPreviousOrNextBtn;
+        self.showTheItemsInRange = showTheItemsInRange;
 
-        self.myRepoes = GithubApisFactory.query({username: "TonyPythoneer"}, function(res, headers){
+        self.myRepoes = GithubApisFactory.query({username: self.author}, function(res, headers){
             var _headers = headers();
-            console.log("%s / %s", _headers["x-ratelimit-remaining"], _headers["x-ratelimit-limit"]);
+            maxPage = GitHubApisService.getMaxPage(self.myRepoes.length);
+            //$log.info("%s / %s", _headers["x-ratelimit-remaining"], _headers["x-ratelimit-limit"]);
         }, function(){
-            console.log("error");
+            //$log.error("error");
         });
 
-        console.log(self.myRepoes)
+        ///
 
-
-        function function_name (argument) {
-            // body...
+        function clickPreviousOrNextBtn(paging){
+            var allowPageDown = paging === -1 && self.currentPage !== 1;
+            var allowPageUp = paging === 1 && self.currentPage !== maxPage;
+            //$log.debug(allowPageDown, allowPageUp);
+            if (allowPageDown || allowPageUp){
+                self.currentPage += paging;
+                self.enablePrevBtn = (self.clickPreviousOrNextBtn === 1)? false: true;
+                self.enableNextBtn = (self.clickPreviousOrNextBtn === maxPage)? false: true;
+            }
         }
+
+        function showTheItemsInRange(page, index){
+            return (page-1)*10 <= index  && index < page*10
+        }
+
     }
 
 })();
