@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="githubApp">
+<head>
+    <title></title>
+
+    <!-- import css-->
+    <!--<link rel="stylesheet" type="text/css" href="name.css">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- import js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-resource.min.js" type="text/javascript"></script>
+
+    <script src="./github-app.module.js" type="text/javascript"></script>
+    <script src="./github-apis.factory.js" type="text/javascript"></script>
+    <script src="./github-apis.service.js" type="text/javascript"></script>
+    <script src="./github-app.controller.js" type="text/javascript"></script>
+
+</head>
+<body class="container"
+    ng-controller="GitHubApisController as ctrl">
+    <div class="well well-lg">{{ctrl.author}}</div>
+
+    <ul class="list-group">
+        <a class="list-group-item"
+            ng-repeat="repo in ctrl.myRepoes track by $index"
+            ng-href="{{repo.html_url}}"
+            ng-show="ctrl.showTheItemsInRange(ctrl.currentPage, $index)">{{$index + 1}}. {{repo.name}}</a>
+    </ul>
+
+    <div class="input-group" style="width: 10%">
+        <div class="input-group-btn" aria-label="Previous">
+            <button type="button" class="btn btn-default"
+                ng-click="ctrl.clickPrevOrNextBtn(-1)"
+                ng-class="ctrl.enablePrevOrNextBtn('prev')">&laquo;</button>
+        </div>
+        <input type="text" class="form-control" value="{{ctrl.currentPage}}">
+        <div class="input-group-btn" aria-label="Next">
+            <button type="button" class="btn btn-default"
+                ng-click="ctrl.clickPrevOrNextBtn(1)"
+                ng-class="ctrl.enablePrevOrNextBtn('next')">&raquo;</button>
+        </div>
+    </div>
+
+</body>
+</html>
